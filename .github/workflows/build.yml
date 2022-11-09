@@ -1,0 +1,81 @@
+name: Build pipeline
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [released]
+
+jobs:
+  build:
+    name: 🔨 Build distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 🏗 Set up Python 3.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.7
+      - name: 🏗 Install build dependencies
+        run: >-
+          python -m pip install wheel build --user
+      - name: 🔨 Build a binary wheel and a source tarball
+        run: >-
+          pip -m build
+      - name: ⬆ Upload build result
+        uses: actions/upload-artifact@v1
+        with:
+          name: dist
+          path: dist
+
+  lint-black:
+    name: 🧹 black
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 🏗 Set up Python 3.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.7
+      - name: 🏗 Set up dev dependencies
+        run: |
+          pip install pre-commit
+      - name: 🚀 Run black
+        run: |
+          pre-commit run --hook-stage manual black --all-files --show-diff-on-failure
+
+  #publish-on-testpypi:
+  #  name: 📦 Publish on TestPyPI
+  #  if: github.event_name == 'release'
+  #  needs:
+  #    - build
+  #    - lint-black
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: ⬇ Download build result
+  #      uses: actions/download-artifact@v1
+  #      with:
+  #        name: dist
+  #        path: dist
+  #    - name: 📦 Publish to index
+  #      uses: pypa/gh-action-pypi-publish@master
+  #      continue-on-error: true
+  #      with:
+  #        password: ${{ secrets.testpypi_password }}
+  #        repository_url: https://test.pypi.org/legacy/
+
+  #publish-on-pypi:
+  #  name: 📦 Publish tagged releases to PyPI
+  #  if: github.event_name == 'release'
+  #  needs: publish-on-testpypi
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: ⬇ Download build result
+  #      uses: actions/download-artifact@v1
+  #      with:
+  #        name: dist
+  #        path: dist
+  #    - name: 📦 Publish to index
+  #      uses: pypa/gh-action-pypi-publish@master
+  #      with:
+  #        password: ${{ secrets.pypi_password }}

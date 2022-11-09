@@ -1,0 +1,35 @@
+[project]
+name = "OctoPrint-Setuptools"
+version = "1.0.0"
+description = "Setuptools helpers for installing OctoPrint & OctoPrint plugins"
+authors = [
+    {name = "Gina Häußge", email = "gina@octoprint.org"},
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.7,<4"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[project.urls]
+homepage = "https://github.com/OctoPrint/OctoPrint-Setuptools"
+
+[build-system]
+requires = [
+    "setuptools>=40.8.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 90
+include = '\.pyi?$'
