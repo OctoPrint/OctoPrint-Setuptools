@@ -3,10 +3,10 @@ name = "OctoPrint-Setuptools"
 version = "1.0.0"
 description = "Setuptools helpers for installing OctoPrint & OctoPrint plugins"
 authors = [
-    {name = "Gina Häußge", email = "gina@octoprint.org"},
+    {name = "Gina Haeussge", email = "gina@octoprint.org"}, # ASCII to work around pypa/wheel#488
 ]
 readme = "README.md"
-license = {file = "LICENSE"}
+license = {text = "AGPLv3"}
 requires-python = ">=3.7,<4"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
