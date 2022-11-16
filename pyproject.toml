@@ -1,6 +1,6 @@
 [project]
 name = "OctoPrint-Setuptools"
-version = "1.0.0"
+version = "1.0.1"
 description = "Setuptools helpers for installing OctoPrint & OctoPrint plugins"
 authors = [
     {name = "Gina Haeussge", email = "gina@octoprint.org"}, # ASCII to work around pypa/wheel#488
