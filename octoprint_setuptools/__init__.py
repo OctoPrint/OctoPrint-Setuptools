@@ -160,6 +160,7 @@ class CleanCommand(_clean):
 
 def _normalize_locale(l):
     from babel.core import Locale
+
     return str(Locale.parse(l))
 
 
