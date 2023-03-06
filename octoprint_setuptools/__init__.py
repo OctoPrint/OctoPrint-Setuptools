@@ -333,7 +333,8 @@ class RefreshTranslation(Command):
 
         self.babel_update_messages.input_file = self.__class__.pot_file
         self.babel_update_messages.output_dir = self.__class__.output_dir
-        self.babel_update_messages.locale = _normalize_locale(self.locale)
+        if self.locale:
+            self.babel_update_messages.locale = _normalize_locale(self.locale)
         self.babel_update_messages.finalize_options()
 
     def run(self):
