@@ -2,4 +2,4 @@
 
 from distutils.core import setup
 
-setup(packages=['octoprint_setuptools'])
+setup(packages=["octoprint_setuptools"])
