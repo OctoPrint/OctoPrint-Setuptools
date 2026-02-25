@@ -2,7 +2,7 @@
 > 
 > This should not be used anymore!
 >
-> They turned out to be the wrong solution for a problem better solved by moving to the use
+> This turned out to be the wrong solution for a problem better solved by moving to the use
 > of `pyproject.toml`. A tool for helping with that has been made available at [OctoPrint/octoprint-plugint-tool](https://github.com/OctoPrint/octoprint-plugin-tool).
 > Please use that instead.
 
